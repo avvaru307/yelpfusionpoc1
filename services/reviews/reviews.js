@@ -6,7 +6,7 @@ const getReviewsforBusinessById = async (req, res, next) => {
 		console.log('getReviewsforBusinessById');
 		let businesses_review_id_URL = appconfig.businesses_reviews_id_URL.replace('{id}',req.params.id);
 		let options = { url: businesses_review_id_URL,  headers: { 'User-Agent': 'request',  'Authorization': 'Bearer '+appconfig.apiKey }};
-        let response = await request.get(options);//(req.params.id);
+        let response = await request.get(options);
         if (response) {
             return res.status(200).json({
                 'message': `Reviews for Business with id ${req.params.id} fetched successfully`,
@@ -20,7 +20,6 @@ const getReviewsforBusinessById = async (req, res, next) => {
         });
 
     } catch (error) {
-
         return res.status(500).json({
             'code': 'SERVER_ERROR',
             'description': 'something went wrong, Please try again'
